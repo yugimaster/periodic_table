@@ -1,0 +1,59 @@
+{% load app_filters %}
+{% for item in ElementData %}
+    <div class="element {{ item.category|classify_category }}" style="left: {{ item.xpos|get_pos_string }}px; top: {{ item.ypos|get_pos_string }}px">
+        <span class="number">{{ item.number }}</span>
+        <span class="symbol">{{ item.symbol }}</span>
+        <span class="name">{{ item.name }}</span>
+        <div class="details">
+            <div class="details-close">
+                <button class="close">×</button>
+            </div>
+            <div class="details-info">
+                <p class="summary">{{ item.summary }}</p>
+            </div>
+            <div class="details-row">
+                <div class="appearance measure">
+                    <span class="label">Appearance</span>
+                    <span class="value">{{ item.appearance|check_empty }}</span>
+                </div>
+            </div>
+            <div class="details-row">
+                <div class="discovery measure">
+                    <span class="label">Discovery By</span>
+                    <span class="value">{{ item.discovered_by|check_empty }}</span>
+                </div>
+                <div class="category measure">
+                    <span class="label">Category</span>
+                    <span class="value">{{ item.category|check_empty }}</span>
+                </div>
+                <div class="phase measure">
+                    <span class="label">Phase</span>
+                    <span class="value">{{ item.phase|check_empty }}</span>
+                </div>
+            </div>
+            <div class="details-row">
+                <div class="atomic_mass measure">
+                    <span class="label">Atomic Mass (u)</span>
+                    <span class="value count">{{ item.atomic_mass|check_empty }}</span>
+                </div>
+                <div class="density measure">
+                    <span class="label">Density (g/L)</span>
+                    <span class="value count">{{ item.density|check_empty }}</span>
+                </div>
+                <div class="boil measure">
+                    <span class="label">Boiling Point (K)</span>
+                    <span class="value count">{{ item.boil|check_empty }}</span>
+                </div>
+                <div class="melt measure">
+                    <span class="label">Melting Point (K)</span>
+                    <span class="value count">{{ item.melt|check_empty }}</span>
+                </div>
+            </div>
+            <div class="details-row">
+                <div class="wiki measure">
+                    <span class="label">Read More at <a class="link" target="_blank" href="{{ item.source }}">Wikipedia</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
